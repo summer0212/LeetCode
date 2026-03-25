@@ -1,0 +1,52 @@
+# test_dict = {'gfg': [5, 6, 7, 8],
+#              'is': [10, 11, 7, 5],
+#              'best': [6, 12, 10, 8],
+#              'for': [1, 2, 5]}
+req = {
+    "user_name" : "jatin",
+    "password" : "123456789",
+    "hotel_codes" : ["JP123","JP456"],
+    "check_in": "14/08/2024",
+    "check_out": "17/08/2024",
+    "paxes":[
+    {
+        "pax_type":"ADULT",
+        "pax_age_yrs": 22,
+        "pax_id": 1 
+    },
+    {
+        "pax_type":"ADULT",
+        "pax_age_yrs": 24,
+        "pax_id": 2
+    },
+    {
+        "pax_type":"CHILD",
+        "pax_age_yrs": 14,
+        "pax_id": 3
+    }
+    ],
+    "room_distribution":[
+    {
+        "pax_ref": [1]
+    },
+    {
+        "pax_ref": [2,3]
+    }
+    ],
+    "country_of_res":"IN"
+}
+
+
+result = []
+
+
+for i in req.keys():
+    # result.extend(req[i]) --> ['j', 'a', 't', 'i', 'n', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'JP123', 'JP456', '1', '4', '/', '0', '8', '/', '2', '0', '2', '4', '1', '7', '/', '0', '8', '/', '2', '0', '2', '4', {'pax_type': 'ADULT', 'pax_age_yrs': 22, 'pax_id': 1}, {'pax_type': 'ADULT', 'pax_age_yrs': 24, 'pax_id': 2}, {'pax_type': 'CHILD', 'pax_age_yrs': 14, 'pax_id': 3}, {'pax_ref': [1]}, {'pax_ref': [2, 3]}, 'I', 'N']
+    
+    
+    #result += req[i]  -->  ['j', 'a', 't', 'i', 'n', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'JP123', 'JP456', '1', '4', '/', '0', '8', '/', '2', '0', '2', '4', '1', '7', '/', '0', '8', '/', '2', '0', '2', '4', {'pax_type': 'ADULT', 'pax_age_yrs': 22, 'pax_id': 1}, {'pax_type': 'ADULT', 'pax_age_yrs': 24, 'pax_id': 2}, {'pax_type': 'CHILD', 'pax_age_yrs': 14, 'pax_id': 3}, {'pax_ref': [1]}, {'pax_ref': [2, 3]}, 'I', 'N']
+   
+   
+    # result.append(req[i]) --> ['jatin', '123456789', ['JP123', 'JP456'], '14/08/2024', '17/08/2024', [{'pax_type': 'ADULT', 'pax_age_yrs': 22, 'pax_id': 1}, {'pax_type': 'ADULT', 'pax_age_yrs': 24, 'pax_id': 2}, {'pax_type': 'CHILD', 'pax_age_yrs': 14, 'pax_id': 3}], [{'pax_ref': [1]}, {'pax_ref': [2, 3]}], 'IN']
+
+

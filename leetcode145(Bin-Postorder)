@@ -1,0 +1,85 @@
+  # Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution:
+    def postorderTraversal(self, root):
+        result = []
+
+        def traverse(node):
+            if node is None:
+                return
+
+            # Postorder: Left → Right → Root
+            traverse(node.left)   # 1. Traverse left subtree
+            traverse(node.right)  # 2. Traverse right subtree
+            result.append(node.val)  # 3. Visit root node
+
+        traverse(root)
+        return result
+
+# Helper function to build tree from list representation (for local testing)
+def build_tree_from_list(arr):
+    """Build a binary tree from level-order list representation"""
+    if not arr or arr[0] is None:
+        return None
+    
+    root = TreeNode(arr[0])
+    queue = [root]
+    i = 1
+    
+    while queue and i < len(arr):
+        node = queue.pop(0)
+        
+        # Left child
+        if i < len(arr) and arr[i] is not None:
+            node.left = TreeNode(arr[i])
+            queue.append(node.left)
+        i += 1
+        
+        # Right child
+        if i < len(arr) and arr[i] is not None:
+            node.right = TreeNode(arr[i])
+            queue.append(node.right)
+        i += 1
+    
+    return root
+
+# Test the solution
+if __name__ == "__main__":
+    solution = Solution()
+    
+    # Test case 1: [1,2,3,4,5,None,8,None,None,6,7,9]
+    # Tree structure:
+    #         1
+    #       /   \
+    #      2     3
+    #     / \     \
+    #    4   5     8
+    #       / \   / \
+    #      6   7 9   None
+    arr = [1, 2, 3, 4, 5, None, 8, None, None, 6, 7, 9]
+    root = build_tree_from_list(arr)
+    
+    result = solution.postorderTraversal(root)
+    print(f"Input array: {arr}")
+    print(f"Postorder traversal: {result}")
+    print()
+    
+    # Visual representation
+    print("Tree structure:")
+    print("""
+          1
+        /   \\
+       2     3
+      / \\     \\
+     4   5     8
+        / \\   /
+       6   7 9
+    """)
+    print(f"Postorder (Left → Right → Root): {result}")
+    print(f"Expected: [4, 6, 7, 5, 2, 9, 8, 3, 1]")
+        
