@@ -1,13 +1,10 @@
-nums = [-2, 0, 3, -5, 2, -1]
+arr = [-2, 0, 3, -5, 2, -1]
+n = len(arr)
 
-#prefix_sum = [0,-2,-2, 1, -4, -2, -3]
+prefix_arr = [0] * n
+prefix_arr[0] = arr[0]
 
-# result = [0] * (len(nums)+ 1)
-result = []
-store = 0
-for num in nums:
-    # store = num + result[i]
-    store += num
-    result.append(store)
+for i in range(1,n):
+    prefix_arr[i] = prefix_arr[i-1] + arr[i]
 
-print(result)
+print(prefix_arr)

@@ -20,3 +20,12 @@ class Solution:
 
 object = Solution()
 print(object.largestAltitude(gain = [-4,-3,-2,-1,4,3,2]))
+
+'''Alternate method:
+        n = len(gain)
+        prefix_sum = [0] * (n+1)
+        
+        for i in range(0,len(gain)):
+            prefix_sum[i+1] = prefix_sum[i] + gain[i]
+            
+        return max(prefix_sum)'''
