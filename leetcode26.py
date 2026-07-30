@@ -1,18 +1,14 @@
 class Solution:
     def removeDuplicates(self, nums):
         n = len(nums)
-        # result = ['_'] * (n)
-        result = []
+        left = 1
 
-        for i in range(0,n):
-            if nums[i] in result:
-                continue
-            if nums[i] not in result:
-                # result[i] = nums[i]
-                result.append(nums[i])
-        print(f"result: {result}")
-
-        return len(result),result
+        for right in range(1,n):
+            if nums[right] != nums[right-1]:
+                nums[left]  = nums[right]
+                left += 1
+        return left
+        
 
 
 obj = Solution()
